@@ -2,14 +2,12 @@
 
 'use strict'
 
-if (process.argv.indexOf('--no-bootstrap') !== -1) {
-  console.log('Executing bootstrap step');
+if (process.argv.includes('--no-bootstrap')) {
+  console.log('Skipping bootstrap')
+} else {
   // Bootstrap first to ensure all the dependencies used later in this script
   // are installed.
   require('./bootstrap')
-} else {
-  console.log('Skipping bootstrap step')
-  console.log(process.argv)
 }
 
 // Needed so we can require src/module-cache.coffee during generateModuleCache
